@@ -1,0 +1,31 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+const int max_word_len = 30;
+int read_in(char[][max_word_len], char[][max_word_len]);
+void sort_words(char[][max_word_len], char[][max_word_len], int);
+void search_words(char[][max_word_len],char[][max_word_len], int);
+void write_out(char[][max_word_len],char[][max_word_len], int);
+int main () 
+{
+	const int max_word_count = 50;
+	char english[max_word_count][max_word_len];
+    	char french[max_word_count][max_word_len];
+    	int word_count = read_in(english, french);
+	string line;
+	ifstream myfile;							
+	ofstream outfile;							
+	myfile.open("English.txt");
+	if (myfile.is_open())
+	{
+		while (myfile.good())
+		{
+			getline (myfile,line);
+			cout<<line<<endl;
+		}
+		myfile.close();
+	}
+	else cout << "Unable to open the file"; 
+	return 0;
+}
